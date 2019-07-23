@@ -3,13 +3,13 @@ import mathlib
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 import random
-import time
+import argparse
 
 def makeGrid(cols,rows):
     world = np.zeros((cols,rows))
     for i in range(0,cols):
         for j in range(0,rows):
-            world[i][j] = random.randint(0,1)
+            world[i,j] = random.randint(0,1)
     return(world)
 
 def neighbours(x, y, world):
@@ -34,24 +34,29 @@ def gen(world):
 
 def animate(world):
     fig = plt.figure()
-    plt.axis('on')
+    plt.axis('off')
     ims = []
     i = 1
-    rotation = 200
+    rotation = 400
 
     for i in range(rotation):
         ims.append((plt.imshow(world, cmap='binary'),))
         world = gen(world)
         i+1
         print(i,'/',rotation)
-    im_ani = animation.ArtistAnimation(fig, ims, interval=10,
+    im_ani = animation.ArtistAnimation(fig, ims, interval=20,
     repeat_delay=10000, blit=True)
 
     plt.show()
 
 
 if __name__ == '__main__':
-    cols = 60
-    rows = 60
+    cols = 70
+    rows = 70
+
+    #parser = argparse.ArgumentParser(description="Conway's Game of Life")
+    #parser.add_argument('--grid-size cols', dest='cols', required=False)
+    #parser.add_argument('--grid-size rows', dest='rows', required=False)
+
     world = makeGrid(cols,rows)
     animate(world)
