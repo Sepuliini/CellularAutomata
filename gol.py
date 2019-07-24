@@ -30,6 +30,7 @@ def gen(world):
     for i in range(world.shape[0]):
         for j in range(world.shape[1]):
             new_world[i, j] = neighbours(i, j, world)
+
     return new_world
 
 def animate(world):
@@ -37,22 +38,20 @@ def animate(world):
     plt.axis('on')
     ims = []
     i = 1
-    rotation = 400
+    rotation = 500
 
     for i in range(rotation):
         ims.append((plt.imshow(world, cmap='binary'),))
         world = gen(world)
         i+1
         print(i,'/',rotation)
-    im_ani = animation.ArtistAnimation(fig, ims, interval=20,
+    im_ani = animation.ArtistAnimation(fig, ims, interval=40,
     repeat_delay=10000, blit=True)
-
     plt.show()
 
-
 if __name__ == '__main__':
-    cols = 70
-    rows = 70
+    cols = 55
+    rows = 55
 
     #parser = argparse.ArgumentParser(description="Conway's Game of Life")
     #parser.add_argument('--grid-size cols', dest='cols', required=False)
