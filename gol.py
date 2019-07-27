@@ -12,18 +12,18 @@ def makeGrid(cols,rows):
             world[i,j] = random.randint(0,1)
     return(world)
 
-def neighbours(x, y, world):
+def neighbours(i, j, world):
     neighbours = 0
-    neighbours = np.sum(world[x - 1:x + 2, y - 1:y + 2])
-    neighbours -= world[x,y]
+    neighbours = np.sum(world[i - 1:i + 2, j - 1:j + 2])
+    neighbours -= world[i,j]
 
-    if world[x, y] == 1:
+    if world[i, j] == 1:
         if neighbours < 2 or neighbours > 3:
             return 0
-    elif world[x, y] == 0:
+    elif world[i, j] == 0:
         if neighbours == 3:
             return 1
-    return world[x,y]
+    return world[i,j]
 
 def gen(world):
     new_world = np.copy(world)
@@ -37,21 +37,21 @@ def animate(world):
     fig = plt.figure()
     plt.axis('on')
     ims = []
-    i = 1
+    i = 0
     rotation = 500
 
-    for i in range(rotation):
+    for n in range(rotation):
         ims.append((plt.imshow(world, cmap='binary'),))
         world = gen(world)
-        i+1
+        i+=1
         print(i,'/',rotation)
-    im_ani = animation.ArtistAnimation(fig, ims, interval=40,
+    im_ani = animation.ArtistAnimation(fig, ims, interval=10,
     repeat_delay=10000, blit=True)
     plt.show()
 
 if __name__ == '__main__':
-    cols = 55
-    rows = 55
+    cols = 60
+    rows = 60
 
     #parser = argparse.ArgumentParser(description="Conway's Game of Life")
     #parser.add_argument('--grid-size cols', dest='cols', required=False)
