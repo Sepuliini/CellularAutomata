@@ -18,13 +18,15 @@ def makeGrid(cols,rows,theme):
                   [1, 1, 0, 0],
                   [0, 0, 1, 1],
                   [0, 0, 1, 1]]
+                  
         world[1:5, 1:5] = beacon
 
     elif theme == 3:  
         glider = [[0, 1, 0, 0],
-                   [0, 0, 1, 0],
-                   [1, 1, 1, 0],
-                   [0, 0, 0, 0]]
+                  [0, 0, 1, 0],
+                  [1, 1, 1, 0],
+                  [0, 0, 0, 0]]
+
         world[1:5, 1:5] = glider
 
     return(world)
