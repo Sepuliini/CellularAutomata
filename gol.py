@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 import random
 import argparse
+import sys
 
 def makeGrid(cols,rows,gridtype):
     world = np.zeros((cols,rows))
@@ -68,33 +69,41 @@ def gen(world):
     return new_world
 
 
-def animate(world):
+def animate(world,nt):
     fig = plt.figure()
     plt.axis('on')
     ims = []
     i = 0
-    rotation = 200
-
-    for n in range(rotation):
-        ims.append((plt.imshow(world, cmap='binary'),))
+    
+    
+    for n in range(nt):
+        ims.append((plt.imshow(world, cmap='binary'),plt.title('Game_Of_Life')))
         world = gen(world)
         i+=1
-        print(i,'/',rotation)
+        print(i,'/',nt)
 
-    im_ani = animation.ArtistAnimation(fig, ims, interval=60,
-    repeat_delay=10000, blit=True)
+    gol_animation = animation.ArtistAnimation(fig, ims, interval=50,
+    repeat=True, blit=True)
     plt.show()
+    
 
 
 if __name__ == '__main__':
     cols = 50
     rows = 50
-    gridtype = 3
+    gridtype = 0
 
-    #parses
-    #parser = argparse.ArgumentParser(description="Conway's Game of Life")
-    #parser.add_argument('--grid-size cols', dest='cols', required=False)
-    #parser.add_argument('--grid-size rows', dest='rows', required=False)
+    
+    parser = argparse.ArgumentParser(description="Conway's Game of Life")
+    parser.add_argument('--grid-size cols', dest='cols', required=True)
+    parser.add_argument('--grid-size rows', dest='rows', required=True)
+    parser.add_argument('--gridtype', dest='gridtype', required=True)
+    parser.add_argument('--nt', dest='rows', required=True)
+
+    cols = int(sys.argv[1])
+    rows = int(sys.argv[2])
+    gridtype = int(sys.argv[3])
+    nt = int(sys.argv[4])
 
     world = makeGrid(cols,rows,gridtype)
-    animate(world)
+    animate(world,nt)
