@@ -22,13 +22,13 @@ def makeGrid(cols,rows,gridtype):
 
         world[1:5, 1:5] = beacon
 
-    elif gridtype== 2:  
+    elif gridtype== 2:
         glider = [[0, 1, 0, 0],
                   [0, 0, 1, 0],
                   [1, 1, 1, 0],
                   [0, 0, 0, 0]]
 
-        world[1:5, 1:5] = glider          
+        world[1:5, 1:5] = glider
 
     elif gridtype == 3:
         glider_gun = [[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0],
@@ -40,10 +40,8 @@ def makeGrid(cols,rows,gridtype):
                       [0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0],
                       [0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
                       [0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]]
-                
+
         world[1:10, 1:37] = glider_gun
-
-
     return(world)
 
 def neighbours(i, j, world):
@@ -68,14 +66,12 @@ def gen(world):
             new_world[i, j] = neighbours(i, j, world)
     return new_world
 
-
 def animate(world,nt):
     fig = plt.figure()
     plt.axis('on')
     ims = []
     i = 0
-    
-    
+
     for n in range(nt):
         ims.append((plt.imshow(world, cmap='binary'),plt.title('Game_Of_Life')))
         world = gen(world)
@@ -85,14 +81,11 @@ def animate(world,nt):
     gol_animation = animation.ArtistAnimation(fig, ims, interval=50,
     repeat=True, blit=True)
     plt.show()
-    
-
 
 if __name__ == '__main__':
     cols = 50
     rows = 50
     gridtype = 0
-
     
     parser = argparse.ArgumentParser(description="Conway's Game of Life")
     parser.add_argument('--grid-size cols', dest='cols', required=True)
