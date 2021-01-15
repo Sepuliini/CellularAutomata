@@ -77,7 +77,7 @@ def animate(world,nt,rep):
         world = gen(world)
 
         i+=1
-        
+
     print("Starting simulation")    
 
     gol_animation = animation.ArtistAnimation(fig, ims, interval=50,
@@ -90,6 +90,8 @@ def start():
     rows = int(input("How many rows? "))
     gridtype = int(input("Select gridtype: 0, 1, 2, 3 "))
     toistot = int(input("How many times? "))
+
+    #rep not working 
     uudelleen = input("Repeat simulation? ")
 
     wolrd = makeGrid(cols,rows, gridtype)  
