@@ -66,7 +66,7 @@ def gen(world):
             new_world[i, j] = neighbours(i, j, world)
     return new_world
 
-def animate(world,nt):
+def animate(world,nt,rep):
     fig = plt.figure()
     plt.axis('on')
     ims = []
@@ -75,28 +75,40 @@ def animate(world,nt):
     for n in range(nt):
         ims.append((plt.imshow(world, cmap='binary'),plt.title('Game_Of_Life')))
         world = gen(world)
+
         i+=1
-        print(i,'/',nt)
+        
+    print("Starting simulation")    
 
     gol_animation = animation.ArtistAnimation(fig, ims, interval=50,
-    repeat=True, blit=True)
+    repeat=rep, blit=True)
     plt.show()
 
-if __name__ == '__main__':
-    cols = 50
-    rows = 50
-    gridtype = 0
+def start():
+
+    cols = int(input("How many columns? "))
+    rows = int(input("How many rows? "))
+    gridtype = int(input("Select gridtype: 0, 1, 2, 3 "))
+    toistot = int(input("How many times? "))
+    uudelleen = input("Repeat simulation? ")
+
+    wolrd = makeGrid(cols,rows, gridtype)  
+    animate(wolrd,toistot,uudelleen)
     
-    parser = argparse.ArgumentParser(description="Conway's Game of Life")
-    parser.add_argument('--grid-size cols', dest='cols', required=True)
-    parser.add_argument('--grid-size rows', dest='rows', required=True)
-    parser.add_argument('--gridtype', dest='gridtype', required=True)
-    parser.add_argument('--nt', dest='rows', required=True)
 
-    cols = int(sys.argv[1])
-    rows = int(sys.argv[2])
-    gridtype = int(sys.argv[3])
-    nt = int(sys.argv[4])
+if __name__ == '__main__':
+    start()
 
-    world = makeGrid(cols,rows,gridtype)
-    animate(world,nt)
+   # no parser for now
+   # parser = argparse.ArgumentParser(description="Conway's Game of Life")
+   # parser.add_argument('--grid-size cols', dest='cols', required=True)
+   # parser.add_argument('--grid-size rows', dest='rows', required=True)
+   # parser.add_argument('--gridtype', dest='gridtype', required=True)
+   # parser.add_argument('--nt', dest='rows', required=True)
+
+    # cols = int(sys.argv[1])
+    # rows = int(sys.argv[2])
+    # gridtype = int(sys.argv[3])
+    # nt = int(sys.argv[4])
+
+    
