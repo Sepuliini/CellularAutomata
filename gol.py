@@ -91,7 +91,7 @@ def start():
     gridtype = int(input("Select gridtype: 0, 1, 2, 3 "))
     toistot = int(input("How many times? "))
 
-    #rep not working 
+    #rep not working // fix
     uudelleen = input("Repeat simulation? ")
 
     wolrd = makeGrid(cols,rows, gridtype)  
