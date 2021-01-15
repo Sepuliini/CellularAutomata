@@ -71,6 +71,14 @@ def animate(world,nt,rep):
     plt.axis('on')
     ims = []
     i = 0
+    boolrep = ""
+
+    #needs fix
+    if rep=="true" or rep=="yes":
+        boolrep = bool(True)
+
+    elif rep =="false" or rep=="no":
+        boolrep = bool(False)
 
     for n in range(nt):
         ims.append((plt.imshow(world, cmap='binary'),plt.title('Game_Of_Life')))
@@ -80,24 +88,26 @@ def animate(world,nt,rep):
 
     print("Starting simulation")    
 
-    gol_animation = animation.ArtistAnimation(fig, ims, interval=50,
-    repeat=rep, blit=True)
+    #interval = speed
+
+    gol_animation = animation.ArtistAnimation(fig, ims, interval=25,
+    repeat=boolrep, blit=True)
     plt.show()
 
 def start():
 
     cols = int(input("How many columns? "))
     rows = int(input("How many rows? "))
-    gridtype = int(input("Select gridtype: 0, 1, 2, 3 "))
+    gridtype = int(input("Select gridtype: 0:, 1:, 2:, 3: "))
     toistot = int(input("How many times? "))
-
-    #rep not working // fix
+    #works
     uudelleen = input("Repeat simulation? ")
 
-    wolrd = makeGrid(cols,rows, gridtype)  
-    animate(wolrd,toistot,uudelleen)
-    
+    print('{} , {} , {} , {} , {}'.format(cols, rows, gridtype, toistot, uudelleen))
 
+    world = makeGrid(cols,rows, gridtype)  
+    animate(world,toistot,uudelleen)
+    
 if __name__ == '__main__':
     start()
 
