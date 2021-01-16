@@ -6,45 +6,7 @@ import random
 import argparse
 import sys
 
-class MakeGrid():
-
-    def __init__ (self, cols, rows, gridtype):
-        self.cols = cols
-        self.rows = rows
-        self.world = np.zeros((self.cols, self.rows))
-
-    def randomGrid(self):
-        for i in range(0, self.cols):
-            for j in range(0, self.rows):
-                self.world[i,j] = random.randint(0,1)    
-        return self.world  
-
-    def beacon(self):
-        beacon = [[1, 1, 0, 0],[1, 1, 0, 0],[0, 0, 1, 1],[0, 0, 1, 1]]    
-
-        self.world[1:5, 1:5] = beacon  
-        return self.world   
-
-    def glider(self):
-        glider = [[0, 1, 0, 0],
-                  [0, 0, 1, 0],
-                  [1, 1, 1, 0],
-                  [0, 0, 0, 0]]
-        self.world[1:5, 1:5] = glider
-        return self.world
-
-    def gliderGun(self):
-        gliderGun =   [[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0],
-                      [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0],
-                      [0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1],
-                      [0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1],
-                      [1,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-                      [1,1,0,0,0,0,0,0,0,0,1,0,0,0,1,0,1,1,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0],
-                      [0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0],
-                      [0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-                      [0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]]
-        self.world[1:10,1:37] = gliderGun
-        return(self.world)
+from grid import MakeGrid
 
 def neighbours(i, j, world):
     neighbours = 0
@@ -82,7 +44,10 @@ def animate(world,nt,rep):
         boolrep = bool(False)
 
     for n in range(nt):
-        ims.append((plt.imshow(world, cmap='binary'),plt.title('Game_Of_Life')))
+        ims.append(
+        (plt.imshow(world, cmap='binary'),
+        plt.title('Game_Of_Life'))
+        )
         world = gen(world)
         i+=1
 
@@ -96,7 +61,7 @@ def animate(world,nt,rep):
 def start():
     cols = int(input("How many columns? "))
     rows = int(input("How many rows? "))
-    gridtype = int(input("Select gridtype: 0:, 1:, 2:, 3: "))
+    gridtype = int(input("Select gridtype: 0:, 1:, 2:, 3:, "))
     toistot = int(input("How many times? "))
     uudelleen = input("Repeat simulation? ")
 
@@ -113,6 +78,7 @@ def start():
         world = gridi.glider()
     elif gridtype == 3:
         world = gridi.gliderGun()
+   
     animate(world,toistot,uudelleen)
 
 if __name__ == '__main__':
