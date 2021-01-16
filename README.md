@@ -8,5 +8,5 @@ Severi Nättilä
 
 Run Command:
 
-	python gol.py 
+	python3 gol.py 
 
