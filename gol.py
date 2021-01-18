@@ -20,6 +20,7 @@ def neighbours(i, j, world):
     elif world[i, j] == 0:
         if neighbours == 3:
             return 1
+            
     return world[i,j]
 
 def gen(world):
