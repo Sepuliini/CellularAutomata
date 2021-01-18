@@ -13,6 +13,7 @@ Run Command:
 
 
 [Random walk](https://en.wikipedia.org/wiki/Random_walk) 
+==============
 
 *Python Version 3.0+*
 ----------------------------
