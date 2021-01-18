@@ -10,3 +10,13 @@ Run Command:
 
 	python3 gol.py 
 
+
+
+[Random walk](https://en.wikipedia.org/wiki/Random_walk) 
+
+*Python Version 3.0+*
+----------------------------
+
+Run Command:
+
+	python3 randwalk.py
