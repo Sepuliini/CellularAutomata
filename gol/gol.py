@@ -55,7 +55,7 @@ def animate(world,nt,rep):
     print("Starting simulation")    
     #interval = speed
     #takes a long time to load if the grid is large (more than 100x100)
-    gol_animation = animation.ArtistAnimation(fig, ims, interval=25,
+    gol_animation = animation.ArtistAnimation(fig, ims, interval=10,
     repeat=boolrep, blit=True)
     plt.show()
 
@@ -79,6 +79,9 @@ def start():
         world = gridi.glider()
     elif gridtype == 3:
         world = gridi.gliderGun()
+
+    #elif gridtype == 4:
+        #world = gridi.Sierpinksi()
    
     animate(world,toistot,uudelleen)
 
