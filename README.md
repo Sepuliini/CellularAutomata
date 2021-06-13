@@ -8,7 +8,7 @@ Severi Nättilä
 
 Run Command:
 
-	python3 gol.py 
+	python gol.py 
 
 
 
@@ -20,4 +20,4 @@ Run Command:
 
 Run Command:
 
-	python3 randwalk.py
+	python randwalk.py
