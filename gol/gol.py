@@ -1,5 +1,4 @@
 import numpy as np
-import mathlib  # Not shown here, presumably some custom math library
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 import random
