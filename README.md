@@ -17,7 +17,7 @@ The Game of Life scripts allow you to **configure** and **visualize** various in
 
 **Key files:**
 
-- **`gol.py`** (or similar):
+- **`gol.py`**:
   - **`neighbours(i, j, world)`**: Determines the next state of a cell based on how many neighbors it has.
   - **`gen(world)`**: Creates the next iteration of the entire grid.
   - **`animate(world, nt, rep)`**: Uses `matplotlib.animation` to produce an animation over `nt` iterations, optionally repeating.
@@ -37,13 +37,14 @@ The Game of Life scripts allow you to **configure** and **visualize** various in
 1. **Install** dependencies (if needed):
    ```bash
    pip install numpy matplotlib
+   ```
 
 2. Run the script:
   ```bash
    python gol.py
+  ```
 
 3. Respond to prompts:
-
 Number of columns, number of rows
 Grid type (0 for random, 1 for beacon, 2 for glider, 3 for glider gun, etc.)
 Number of iterations
@@ -72,23 +73,30 @@ The **Random Walk** script shows a cell with value `1` moving around on a 2D gri
 - **NumPy**
 - **matplotlib**
 
-*(If you already installed these for the Game of Life, no further installation is needed.)*
-
 ### How to Run
 
 1. **Install** dependencies (if not already done):
    ```bash
    pip install numpy matplotlib
+   ```
 
 2. Run the script:
   ```bash
    python randwalk.py
+```
 
 3. The script will:
-Create a 60×60 grid (one cell set to 1)
-Animate 80 steps (or however many you configure), updating the grid each frame
-Display the result as a simple random movement pattern
-A window will open showing the random walk in progress.
+- Create a 60×60 grid (one cell set to 1)
+- Animate 80 steps (or however many you configure), updating the grid each frame
+- Display the result as a simple random movement pattern
+- A window will open showing the random walk in progress.
+
+
+## References
+
+- [Conway’s Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
+- [Random walk](https://en.wikipedia.org/wiki/Random_walk)
+
 
 
 
